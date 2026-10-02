@@ -3,33 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>도깨비의 세계 x 피카플레이 미션 이벤트</title>
+<title>도깨비의세계 x 피카플레이 미션 이벤트</title>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
-<meta name="description" content="도깨비의 세계를 플레이하고 마일리지를 쌓아가요. 피카플레이 PC방·개인 PC(크래프트박스)에서 참여 가능">
-<meta name="keywords" content="도깨비의 세계,크래프트박스,피카플레이,이벤트,마일리지">
+<meta name="description" content="도깨비의세계를 플레이하고 마일리지를 쌓아가요. 피카플레이 PC방·개인 PC(크래프트박스)에서 참여 가능">
+<meta name="keywords" content="도깨비의세계,크래프트박스,피카플레이,이벤트,마일리지">
 <meta name="author" content="DOKKAEBI × CRAFTBOX">
 <meta name="theme-color" content="#0a0f24">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="DOKKAEBI × CRAFTBOX">
-<meta property="og:title" content="도깨비의 세계 x 피카플레이 미션 이벤트">
-<meta property="og:description" content="도깨비의 세계를 플레이하고 마일리지와 특별한 선물을 받아가세요!">
+<meta property="og:title" content="도깨비의세계 x 피카플레이 미션 이벤트">
+<meta property="og:description" content="도깨비의세계를 플레이하고 마일리지와 특별한 선물을 받아가세요!">
 <meta property="og:url" content="https://ics.mediaweb.co.kr/_event/20260923_dokkaebi/index.html" />
 <meta property="og:image" content="https://ics.mediaweb.co.kr/_event/20260923_dokkaebi/assets/Thumbnail_800x400.jpg">
-<meta property="og:image:alt" content="도깨비의 세계 × 크래프트박스 이벤트">
+<meta property="og:image:alt" content="도깨비의세계 × 크래프트박스 이벤트">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="도깨비의 세계 x 피카플레이 미션 이벤트">
-<meta name="twitter:description" content="도깨비의 세계를 플레이하고 마일리지와 특별한 선물을 받아가세요!">
+<meta name="twitter:title" content="도깨비의세계 x 피카플레이 미션 이벤트">
+<meta name="twitter:description" content="도깨비의세계를 플레이하고 마일리지와 특별한 선물을 받아가세요!">
 <meta name="twitter:url" content="https://ics.mediaweb.co.kr/_event/20260923_dokkaebi/index.html" />
 <meta name="twitter:image" content="https://ics.mediaweb.co.kr/_event/20260923_dokkaebi/assets/Thumbnail_1200x630.jpg">
-<meta name="twitter:image:alt" content="도깨비의 세계 × 크래프트박스 이벤트">
+<meta name="twitter:image:alt" content="도깨비의세계 × 크래프트박스 이벤트">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" crossorigin="anonymous"></script>
+<!-- 히어로 인트로 모션 + 아래 섹션 배경 지연 로딩: JS가 켜져 있을 때만 적용 (JS가 없으면 그냥 보임) -->
+<script>
+  document.documentElement.classList.add('intro', 'lazy-sections');
+  // 안전장치: script.js가 4초 안에 실행되지 않으면 숨김 상태를 풀어 모든 콘텐츠·배경을 바로 보여줌
+  setTimeout(function () {
+    if (window.__pageJsReady) return;
+    document.documentElement.classList.remove('intro', 'lazy-sections');
+    document.querySelectorAll('[data-src]').forEach(function (el) { el.src = el.getAttribute('data-src'); });
+    document.querySelectorAll('[data-srcset]').forEach(function (el) { el.srcset = el.getAttribute('data-srcset'); });
+  }, 4000);
+</script>
 </head>
 <body>
 <header class="cb-header" id="top">
@@ -37,7 +48,7 @@
       <div class="cb-header__notice-wrap">
         <!-- PC방 토글 -->
         <button class="toggle-btn" type="button" id="pcRoomToggle" data-state="off" aria-label="PC방 모드 토글">
-          <img class="toggle-btn__img" src="assets/off=off.png" alt="PC방 모드 OFF" loading="lazy" />
+          <img class="toggle-btn__img" src="assets/off=off.webp" alt="PC방 모드 OFF" loading="lazy" />
         </button>
         <p class="cb-header__notice">
           본 이벤트는 <a href="https://picaplay.com/pcbang/main.do" target="_blank" rel="noopener noreferrer"><u>피카플레이 가맹 PC방</u></a> 또는 <b>개인PC에서</b> <a href="https://www.craftbox.co.kr/" target="_blank" rel="noopener noreferrer"><u>크래프트박스 설치</u></a> 후 참여 가능합니다.
@@ -55,122 +66,148 @@
   <section class="hero">
     <div id="star-layer"></div>
 
-    <div class="hero-layer"><img src="assets/hero-bg.webp" alt=""></div>
-    <div class="hero-layer hero-layer--kv"><img src="assets/kv.webp" alt=""></div>
+    <div class="hero-layer">
+      <picture>
+        <source media="(min-width: 721px)" type="image/avif" srcset="assets/kv_new_01.avif"><source media="(min-width: 721px)" srcset="assets/kv_new_01.webp">
+        <source type="image/avif" srcset="assets/kv_new.avif"><img src="assets/kv_new.webp" alt="">
+      </picture>
+    </div>
     <div class="hero-scrim"></div>
 
     <div class="hero-frame">
-      <svg class="hero-corner-pattern hero-corner-pattern--tl" viewBox="0 0 40 40">
-        <path d="M 0,0 L 40,0 L 40,15 L 25,15 L 25,25 L 15,25 L 15,40 L 0,40 Z" fill="#f0c869" opacity="0.1"/>
-        <path d="M 2,2 L 38,2 L 38,13 L 23,13 L 23,23 L 13,23 L 13,38 L 2,38 Z"/>
-        <path d="M 8,8 L 32,8 L 32,13"/>
-        <path d="M 8,8 L 8,32 L 13,32"/>
+      <!-- 코너 매듭 문양: 4칸 격자(6px), 선 굵기 1px. 바깥선·안쪽선은 가장자리(.hero-frame-edge)로 이어짐 -->
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="hero-corner" viewBox="0 0 25 25">
+          <path d="M25,0.5 H18.5 V18.5 H0.5 V25"/>
+          <path d="M25,6.5 H6.5 V25"/>
+          <path d="M0.5,12.5 V0.5 H12.5 V24.5 H24.5 V12.5 Z"/>
+          <path d="M24.5,0.5 V6.5"/>
+          <path d="M0.5,24.5 H6.5"/>
+        </symbol>
       </svg>
-      <svg class="hero-corner-pattern hero-corner-pattern--tr" viewBox="0 0 40 40">
-        <path d="M 0,0 L 40,0 L 40,15 L 25,15 L 25,25 L 15,25 L 15,40 L 0,40 Z" fill="#f0c869" opacity="0.1"/>
-        <path d="M 2,2 L 38,2 L 38,13 L 23,13 L 23,23 L 13,23 L 13,38 L 2,38 Z"/>
-        <path d="M 8,8 L 32,8 L 32,13"/>
-        <path d="M 8,8 L 8,32 L 13,32"/>
-      </svg>
-      <svg class="hero-corner-pattern hero-corner-pattern--bl" viewBox="0 0 40 40">
-        <path d="M 0,0 L 40,0 L 40,15 L 25,15 L 25,25 L 15,25 L 15,40 L 0,40 Z" fill="#f0c869" opacity="0.1"/>
-        <path d="M 2,2 L 38,2 L 38,13 L 23,13 L 23,23 L 13,23 L 13,38 L 2,38 Z"/>
-        <path d="M 8,8 L 32,8 L 32,13"/>
-        <path d="M 8,8 L 8,32 L 13,32"/>
-      </svg>
-      <svg class="hero-corner-pattern hero-corner-pattern--br" viewBox="0 0 40 40">
-        <path d="M 0,0 L 40,0 L 40,15 L 25,15 L 25,25 L 15,25 L 15,40 L 0,40 Z" fill="#f0c869" opacity="0.1"/>
-        <path d="M 2,2 L 38,2 L 38,13 L 23,13 L 23,23 L 13,23 L 13,38 L 2,38 Z"/>
-        <path d="M 8,8 L 32,8 L 32,13"/>
-        <path d="M 8,8 L 8,32 L 13,32"/>
-      </svg>
+      <span class="hero-frame-edge hero-frame-edge--t"></span>
+      <span class="hero-frame-edge hero-frame-edge--b"></span>
+      <span class="hero-frame-edge hero-frame-edge--l"></span>
+      <span class="hero-frame-edge hero-frame-edge--r"></span>
+      <svg class="hero-corner-pattern hero-corner-pattern--tl"><use href="#hero-corner"/></svg>
+      <svg class="hero-corner-pattern hero-corner-pattern--tr"><use href="#hero-corner"/></svg>
+      <svg class="hero-corner-pattern hero-corner-pattern--bl"><use href="#hero-corner"/></svg>
+      <svg class="hero-corner-pattern hero-corner-pattern--br"><use href="#hero-corner"/></svg>
     </div>
 
+    <picture class="avif-wrap"><source type="image/avif" srcset="assets/BI%20copy.avif"><img class="hero-bi" src="assets/BI%20copy.webp" alt="도깨비의세계"></picture>
+    <img class="hero-bi-partner" src="assets/craftbox_BI.webp" alt="크래프트박스">
+
     <div class="hero-content">
-      <div class="hero-logos">
-        <img src="assets/LOGO.webp" alt="도깨비의 세계">
-        <div class="x">X</div>
-        <img src="assets/craftbox_BI.webp" alt="크래프트박스">
-      </div>
-      <h1 class="hero-title">정식 출시 기념,<br>차원이 다른 이벤트 <span class="nowrap">출두요~!</span></h1>
-      <p class="hero-sub">지금 플레이하고 최대 <b>5,000마일리지</b>와<br class="hero-sub-break"> 특별한 선물을 받아가시게!</p>
+      <h1 class="hero-title-img"><picture><source media="(max-width: 720px)" type="image/avif" srcset="assets/title_m.avif"><source media="(max-width: 720px)" srcset="assets/title_m.webp"><source type="image/avif" srcset="assets/KV_title.avif"><img src="assets/KV_title.webp" alt="정식 출시 기념, 차원이 다른 이벤트 출두요~! 지금 플레이하고 최대 5천 마일리지와 특별한 선물 받아가시게! 2026.10.08 ~ 2026.10.28 피카플레이 회원 대상"></picture></h1>
 
       <a class="hero-cta" href="https://dokkaebi.kakaogames.com/" target="_blank" rel="noopener">
         <img src="assets/BTN.webp" alt="지금 플레이하고 마일리지 받기">
       </a>
-      <div class="hero-period"><img src="assets/dot.webp" alt="">2026.10.08 ~ 2026.10.28 · 피카플레이 회원 대상<img src="assets/dot.webp" alt=""></div>
     </div>
   </section>
 
   <!-- 출석체크 미션 -->
-  <section class="section section--a">
+  <section class="section section--a section--reward-bg section--attendance">
+    <picture class="avif-wrap"><source type="image/avif" data-srcset="assets/objet_left.avif"><img loading="lazy" decoding="async" class="attendance-objet attendance-objet--left" data-src="assets/objet_left.webp" alt=""></picture>
+    <picture class="avif-wrap"><source type="image/avif" data-srcset="assets/objet_right.avif"><img loading="lazy" decoding="async" class="attendance-objet attendance-objet--right" data-src="assets/objet_right.webp" alt=""></picture>
     <div class="section-inner section-inner--attendance">
       <div class="section-head">
         <div class="section-eyebrow">MISSION 01</div>
         <h2 class="section-title">출석체크 미션</h2>
-        <p class="section-desc">매일 1시간 이상 도깨비의 세계를 플레이한 유저분들에게 선착순 마일리지 지급!<br>일일 1시간 달성 시, 총 3일간 참여 가능</p>
+        <img loading="lazy" decoding="async" class="section-divider" data-src="assets/divider_line.webp" alt="">
+        <picture>
+          <source media="(max-width: 720px)" type="image/avif" data-srcset="assets/img_mission1_txt_m.avif"><source media="(max-width: 720px)" data-srcset="assets/img_mission1_txt_m.webp">
+          <source type="image/avif" data-srcset="assets/img_mission1_txt.avif"><img loading="lazy" decoding="async" class="section-desc-img section-desc-img--m1" data-src="assets/img_mission1_txt.webp" alt="매일 1시간 플레이하고, 선착순 마일리지 획득! 이전 DAY 미션 완료 시 다음 DAY 미션에 참여할 수 있습니다.">
+        </picture>
       </div>
       <div class="attendance-grid">
-        <div class="attendance-card">
+        <div class="attendance-card is-active">
           <div class="attendance-icon">
             <div class="attendance-label">
               <div class="attendance-day">DAY 1</div>
               <div class="attendance-cond">1시간 이상 플레이 시</div>
             </div>
-            <img src="assets/1000.webp" alt="1,000 마일리지">
+            <img loading="lazy" decoding="async" data-src="assets/1000.webp" alt="1,000 마일리지">
           </div>
         </div>
-        <div class="attendance-card">
+        <div class="attendance-arrow" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="attendance-card is-locked">
           <div class="attendance-icon">
             <div class="attendance-label">
               <div class="attendance-day">DAY 2</div>
               <div class="attendance-cond">1시간 이상 플레이 시</div>
             </div>
-            <img src="assets/2000.webp" alt="2,000 마일리지">
+            <img loading="lazy" decoding="async" data-src="assets/2000.webp" alt="2,000 마일리지">
+          </div>
+          <div class="attendance-lock">
+            <div class="attendance-lock__bubble">DAY 1 완료 후 참여 가능</div>
+            <span class="attendance-lock__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5" fill="currentColor" stroke="none"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.3" r="1.5" fill="#3a2a0e" stroke="none"/><path d="M12 16.3v1.8" stroke="#3a2a0e" stroke-width="1.6"/></svg>
+            </span>
           </div>
         </div>
-        <div class="attendance-card">
+        <div class="attendance-arrow" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="attendance-card is-locked">
           <div class="attendance-icon">
             <div class="attendance-label">
               <div class="attendance-day">DAY 3</div>
               <div class="attendance-cond">1시간 이상 플레이 시</div>
             </div>
-            <img src="assets/2000.webp" alt="2,000 마일리지">
+            <img loading="lazy" decoding="async" data-src="assets/2000.webp" alt="2,000 마일리지">
+          </div>
+          <div class="attendance-lock">
+            <div class="attendance-lock__bubble">DAY 2 완료 후 참여 가능</div>
+            <span class="attendance-lock__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5" fill="currentColor" stroke="none"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.3" r="1.5" fill="#3a2a0e" stroke="none"/><path d="M12 16.3v1.8" stroke="#3a2a0e" stroke-width="1.6"/></svg>
+            </span>
           </div>
         </div>
       </div>
       <div class="attendance-banner">
+        <span class="attendance-banner__dot" aria-hidden="true"></span>
         <span>3일 모두 달성 시</span>
         <span class="amount">최대 5,000 마일리지</span>
         <span>지급!</span>
+        <span class="attendance-banner__dot" aria-hidden="true"></span>
       </div>
     </div>
   </section>
 
   <!-- 누적플레이 미션 -->
-  <section class="section section--b section--reward-bg">
+  <section class="section section--b section--story-bg section--reward">
+    <img loading="lazy" decoding="async" class="reward-front reward-front--left" data-src="assets/front_left.webp" alt="">
+    <img loading="lazy" decoding="async" class="reward-front reward-front--right" data-src="assets/front_right.webp" alt="">
+    <picture class="avif-wrap"><source type="image/avif" data-srcset="assets/p2_cloud_01_trim.avif"><img loading="lazy" decoding="async" class="reward-cloud reward-cloud--01" data-src="assets/p2_cloud_01_trim.webp" alt=""></picture>
+    <picture class="avif-wrap"><source type="image/avif" data-srcset="assets/p2_cloud_02.avif"><img loading="lazy" decoding="async" class="reward-cloud reward-cloud--02" data-src="assets/p2_cloud_02.webp" alt=""></picture>
     <div class="section-inner">
       <div class="section-head">
         <div class="section-eyebrow">MISSION 02</div>
         <h2 class="section-title">누적플레이 미션</h2>
-        <p class="section-desc">누적 5시간 이상 도깨비의 세계를 플레이한 유저분들에게<br>특별 보상 패키지 지급!</p>
+        <img loading="lazy" decoding="async" class="section-divider" data-src="assets/divider_line.webp" alt="">
+        <picture>
+          <source media="(max-width: 720px)" type="image/avif" data-srcset="assets/img_mission2_txt_m.avif"><source media="(max-width: 720px)" data-srcset="assets/img_mission2_txt_m.webp">
+          <source type="image/avif" data-srcset="assets/img_mission2_txt.avif"><img loading="lazy" decoding="async" class="section-desc-img" data-src="assets/img_mission2_txt.webp" alt="누적 5시간 이상 도깨비의세계를 플레이한 유저분들에게 특별 한정 보상 패키지 지급!">
+        </picture>
       </div>
       <div class="reward-card">
-        <div class="reward-scroll reward-scroll--left"><img src="assets/Left.webp" alt=""></div>
-        <div class="reward-scroll reward-scroll--right"><img src="assets/Left.webp" alt=""></div>
+        <div class="reward-scroll reward-scroll--left"><img loading="lazy" decoding="async" data-src="assets/Left.webp" alt=""><span class="reward-scroll__cap reward-scroll__cap--top"></span><span class="reward-scroll__cap reward-scroll__cap--bottom"></span></div>
+        <div class="reward-scroll reward-scroll--right"><img loading="lazy" decoding="async" data-src="assets/Left.webp" alt=""><span class="reward-scroll__cap reward-scroll__cap--top"></span><span class="reward-scroll__cap reward-scroll__cap--bottom"></span></div>
         <div class="reward-card-inner">
+          <svg class="reward-corner reward-corner--tl" viewBox="0 0 40 40" aria-hidden="true"><path d="M 2,2 L 38,2 L 38,13 L 23,13 L 23,23 L 13,23 L 13,38 L 2,38 Z"/><path d="M 8,8 L 32,8 L 32,13"/><path d="M 8,8 L 8,32 L 13,32"/></svg>
+          <svg class="reward-corner reward-corner--tr" viewBox="0 0 40 40" aria-hidden="true"><path d="M 2,2 L 38,2 L 38,13 L 23,13 L 23,23 L 13,23 L 13,38 L 2,38 Z"/><path d="M 8,8 L 32,8 L 32,13"/><path d="M 8,8 L 8,32 L 13,32"/></svg>
+          <svg class="reward-corner reward-corner--bl" viewBox="0 0 40 40" aria-hidden="true"><path d="M 2,2 L 38,2 L 38,13 L 23,13 L 23,23 L 13,23 L 13,38 L 2,38 Z"/><path d="M 8,8 L 32,8 L 32,13"/><path d="M 8,8 L 8,32 L 13,32"/></svg>
+          <svg class="reward-corner reward-corner--br" viewBox="0 0 40 40" aria-hidden="true"><path d="M 2,2 L 38,2 L 38,13 L 23,13 L 23,23 L 13,23 L 13,38 L 2,38 Z"/><path d="M 8,8 L 32,8 L 32,13"/><path d="M 8,8 L 8,32 L 13,32"/></svg>
           <div class="reward-box-glow">
-            <img src="assets/pc방 프로모션 상자.webp" alt="도깨비의 세계 PC방 프로모션 상자">
+            <img loading="lazy" decoding="async" class="reward-ink" data-src="assets/ink_mask.webp" alt="">
+            <img loading="lazy" decoding="async" data-src="assets/pc방 프로모션 상자.webp" alt="도깨비의세계 PC방 프로모션 상자">
           </div>
-          <div class="reward-info">
-            <div class="name">도깨비의 세계<br>PC방 프로모션 상자</div>
-            <div class="desc">세부 구성품: 5만 엽전 + 백선운(한정 탈 것)</div>
-            <div class="reward-items">
-              <div class="reward-item"><img src="assets/엽전.webp" alt="엽전"><span>엽전 5만</span></div>
-              <div class="reward-item"><img src="assets/백선운 vehicle_03_0005_a.webp" alt="백선운"><span>백선운(탈 것)</span></div>
-            </div>
-          </div>
+          <picture class="reward-text-pic">
+            <source media="(max-width: 720px)" type="image/avif" data-srcset="assets/img_mission2_txt_reward_m.avif"><source media="(max-width: 720px)" data-srcset="assets/img_mission2_txt_reward_m.webp">
+            <source type="image/avif" data-srcset="assets/img_mission2_txt_reward.avif"><img loading="lazy" decoding="async" class="reward-text-img" data-src="assets/img_mission2_txt_reward.webp" alt="도깨비의세계 PC방 프로모션 상자 - 5만 엽전 + 백선운(한정 탈 것)">
+          </picture>
         </div>
+        <img loading="lazy" decoding="async" class="reward-character" data-src="assets/img_character_01_trim.webp" alt="백선운을 탄 도깨비의세계 캐릭터">
       </div>
     </div>
   </section>
@@ -184,29 +221,26 @@
       </div>
       <div class="redeem-methods">
         <div class="redeem-method">
-          <div class="redeem-method-badge">AOS / PC</div>
-          <div class="redeem-method-flow">
-            <span>게임 접속</span>
-            <span class="arrow">→</span>
-            <span>메뉴</span>
-            <span class="arrow">→</span>
-            <span>설정</span>
-            <span class="arrow">→</span>
-            <span>계정</span>
-            <span class="arrow">→</span>
-            <span>쿠폰등록</span>
-          </div>
-          <div class="redeem-method-desc">위 경로에서 <b style="color:#f0c869;">쿠폰번호</b>를 입력하면 등록할 수 있습니다.</div>
+          <picture>
+            <source media="(max-width: 720px)" type="image/avif" data-srcset="assets/img_aos_m.avif"><source media="(max-width: 720px)" data-srcset="assets/img_aos_m.webp">
+            <source type="image/avif" data-srcset="assets/img_aos.avif"><img loading="lazy" decoding="async" class="redeem-method-img" data-src="assets/img_aos.webp" alt="AOS / PC 게임 내에서 등록: 게임접속 → 메뉴 → 설정 → 계정 → 쿠폰등록. 위 경로에서 쿠폰번호를 입력하면 등록할 수 있습니다.">
+          </picture>
         </div>
         <div class="redeem-method">
-          <div class="redeem-method-badge">iOS</div>
-          <div class="redeem-method-desc">쿠폰 등록 페이지에 접속하여 <b style="color:#f0c869;">회원번호 / 쿠폰번호</b>를 입력하면 등록할 수 있습니다.</div>
+          <picture>
+            <source media="(max-width: 720px)" type="image/avif" data-srcset="assets/img_ios_m.avif"><source media="(max-width: 720px)" data-srcset="assets/img_ios_m.webp">
+            <source type="image/avif" data-srcset="assets/img_ios.avif"><img loading="lazy" decoding="async" class="redeem-method-img" data-src="assets/img_ios.webp" alt="iOS 쿠폰 등록 페이지에서 등록: 쿠폰 등록 페이지에 접속하여 회원번호 / 쿠폰번호를 입력하면 등록할 수 있습니다.">
+          </picture>
           <a class="redeem-method-link" href="https://coupon.kakaogames.com/dokkaebi/ko/" target="_blank" rel="noopener">
-            <span>쿠폰 등록 페이지 바로가기</span><span aria-hidden="true">↗</span>
+            <img loading="lazy" decoding="async" data-src="assets/btn_coupon.webp" alt="쿠폰 등록 페이지 바로가기">
           </a>
         </div>
       </div>
-      <div class="panel-warning">※ 쿠폰은 2026년 11월 30일 23:59:59 까지 등록 가능하며, 도깨비의 세계 계정 당 1회 등록 가능합니다.</div>
+      <div class="attendance-banner attendance-banner--notice" role="note">
+        <span class="attendance-banner__dot" aria-hidden="true"></span>
+        <span class="attendance-banner__text">쿠폰은 <span class="hl">2026년 11월 30일 23:59:59</span> 까지 등록 가능하며, 도깨비의세계 계정 당 1회 등록 가능합니다.</span>
+        <span class="attendance-banner__dot" aria-hidden="true"></span>
+      </div>
     </div>
   </section>
 
@@ -225,23 +259,23 @@
         <div class="step-grid">
           <div class="step-card">
             <div class="step-icon step-icon--sm">
-              <img src="assets/pc-login.webp" alt="STEP 1">
+              <img loading="lazy" decoding="async" data-src="assets/pc-login.webp" alt="STEP 1">
             </div>
-            <div class="step-num">STEP 1</div>
+            <div class="step-num"><small>STEP</small><span>1</span></div>
             <div class="step-text">피카 PC방 좌석에서 피카플레이 회원으로 로그인</div>
           </div>
           <div class="step-card">
             <div class="step-icon">
-              <img src="assets/step2.webp" alt="STEP 2">
+              <img loading="lazy" decoding="async" data-src="assets/step2.webp" alt="STEP 2">
             </div>
-            <div class="step-num">STEP 2</div>
-            <div class="step-text">'도깨비의 세계' 매일 1시간 / 누적 5시간 이상 플레이</div>
+            <div class="step-num"><small>STEP</small><span>2</span></div>
+            <div class="step-text">'도깨비의세계' 매일 1시간 / 누적 5시간 이상 플레이</div>
           </div>
           <div class="step-card">
             <div class="step-icon">
-              <img src="assets/mypage.webp" alt="STEP 3">
+              <img loading="lazy" decoding="async" data-src="assets/mypage.webp" alt="STEP 3">
             </div>
-            <div class="step-num">STEP 3</div>
+            <div class="step-num"><small>STEP</small><span>3</span></div>
             <div class="step-text">피카플레이 APP 또는 크래프트박스 마이페이지에서 마일리지/쿠폰 보상 확인</div>
           </div>
         </div>
@@ -250,23 +284,23 @@
         <div class="step-grid">
           <div class="step-card">
             <div class="step-icon">
-              <img src="assets/craftbox-login.webp" alt="STEP 1">
+              <img loading="lazy" decoding="async" data-src="assets/craftbox-login.webp" alt="STEP 1">
             </div>
-            <div class="step-num">STEP 1</div>
+            <div class="step-num"><small>STEP</small><span>1</span></div>
             <div class="step-text">개인 PC에 <a href="https://www.craftbox.co.kr/" target="_blank" rel="noopener">크래프트박스</a> 설치하고 피카플레이 회원으로 로그인</div>
           </div>
           <div class="step-card">
             <div class="step-icon">
-              <img src="assets/step2.webp" alt="STEP 2">
+              <img loading="lazy" decoding="async" data-src="assets/step2.webp" alt="STEP 2">
             </div>
-            <div class="step-num">STEP 2</div>
-            <div class="step-text">'도깨비의 세계' 다운로드하고, 매일 1시간 / 누적 5시간 이상 플레이</div>
+            <div class="step-num"><small>STEP</small><span>2</span></div>
+            <div class="step-text">'도깨비의세계' 다운로드하고, 매일 1시간 / 누적 5시간 이상 플레이</div>
           </div>
           <div class="step-card">
             <div class="step-icon">
-              <img src="assets/mypage.webp" alt="STEP 3">
+              <img loading="lazy" decoding="async" data-src="assets/mypage.webp" alt="STEP 3">
             </div>
-            <div class="step-num">STEP 3</div>
+            <div class="step-num"><small>STEP</small><span>3</span></div>
             <div class="step-text">피카플레이 APP 또는 크래프트박스 마이페이지에서 마일리지/쿠폰 보상 확인</div>
           </div>
         </div>
@@ -283,15 +317,15 @@
       </div>
       <div class="mileage-grid">
         <div class="mileage-card">
-          <div class="thumb"><img src="assets/mail_01.webp" alt="PC방 결제 화면"></div>
+          <div class="thumb"><img loading="lazy" decoding="async" data-src="assets/mail_01.webp" alt="PC방 결제 화면"></div>
           <div class="name">피카 가맹 PC방 결제</div>
           <div class="desc">피카 가맹 PC방에서 요금제 및 먹거리 결제 시 사용 가능합니다.</div>
         </div>
         <div class="mileage-card mileage-card--char">
-          <div class="thumb"><img src="assets/mail_02.webp" alt="문화상품권 교환 화면"></div>
+          <div class="thumb"><img loading="lazy" decoding="async" data-src="assets/mail_02.webp" alt="문화상품권 교환 화면"></div>
           <div class="name">모바일 문화상품권 교환</div>
           <div class="desc">크래프트박스 또는 피카플레이 APP에서<br>모바일 문화상품권으로 교환 가능합니다.</div>
-          <img class="mileage-character" src="assets/character.webp" alt="">
+          <img loading="lazy" decoding="async" class="mileage-character" data-src="assets/character.webp" alt="">
         </div>
       </div>
       <div class="mileage-notes">
@@ -299,7 +333,7 @@
         * 일부 매장에서는 마일리지 사용이 제한 될 수 있습니다.
       </div>
       <div class="mileage-guide-wrap">
-        <a class="mileage-guide-link" href="https://ics.mediaweb.co.kr/_event/20231115_picapayGuide_APP/picapayGuide1.html" target="_blank" rel="noopener"><img src="assets/btn_how.webp" alt="PC방 이용 가이드 보기"></a>
+        <a class="mileage-guide-link" href="https://ics.mediaweb.co.kr/_event/20231115_picapayGuide_APP/picapayGuide1.html" target="_blank" rel="noopener"><img loading="lazy" decoding="async" data-src="assets/btn_how.webp" alt="PC방 이용 가이드 보기"></a>
       </div>
     </div>
   </section>
@@ -319,10 +353,10 @@
           <li>본 이벤트는 쿠폰 및 마일리지 소진 현황에 따라 조기 종료 또는 연장될 수 있습니다.</li>
           <li>이벤트 참여 전 크래프트박스 → 혜택박스 → 미션상세팝업 내 이벤트 참여 가능 여부를 확인해 주세요.</li>
           <li>게임 플레이 시간 반영은 최대 30분 정도의 지연 시간이 발생할 수 있습니다.</li>
-          <li>쿠폰은 피카플레이 계정으로 자동 지급되며, <a href="https://coupon.kakaogames.com/dokkaebi/ko/" target="_blank" rel="noopener">[도깨비의 세계 쿠폰 등록]</a> 페이지에 쿠폰 번호를 입력하거나 붙여넣기하여 사용 가능합니다.</li>
+          <li>쿠폰은 피카플레이 계정으로 자동 지급되며, <a href="https://coupon.kakaogames.com/dokkaebi/ko/" target="_blank" rel="noopener">[도깨비의세계 쿠폰 등록]</a> 페이지에 쿠폰 번호를 입력하거나 붙여넣기하여 사용 가능합니다.</li>
           <li>지급된 마일리지/쿠폰은 피카플레이 APP 또는 크래프트박스 마이페이지에서 확인하실 수 있습니다.</li>
           <li>지급받은 마일리지는 90일의 유효기간 경과 시 자동 소멸됩니다.</li>
-          <li>쿠폰은 2026년 11월 30일 23:59:59 까지 등록 가능하며, 도깨비의 세계 계정 당 1회 등록 가능합니다.</li>
+          <li>쿠폰은 2026년 11월 30일 23:59:59 까지 등록 가능하며, 도깨비의세계 계정 당 1회 등록 가능합니다.</li>
           <li>이벤트 종료 표기는 실시간으로 반영되지 않을 수 있습니다.</li>
           <li>부정한 방법으로 이벤트에 참여한 이력이 확인될 경우 지급된 보상이 회수 될 수 있습니다.</li>
           <li>이벤트 관련 문의 및 불편사항은 피카플레이 또는 크래프트박스 고객센터 1:1 문의를 이용해 주세요.</li>
@@ -398,14 +432,14 @@
       if (!toggleImg) { return; }
       var isOn = Boolean(isPcRoom);
       toggleBtn.dataset.state = isOn ? 'on' : 'off';
-      toggleImg.src = isOn ? 'assets/off=on.png' : 'assets/off=off.png';
+      toggleImg.src = isOn ? 'assets/off=on.webp' : 'assets/off=off.webp';
       toggleImg.alt = isOn ? 'PC방 모드 ON' : 'PC방 모드 OFF';
     }
     setPcRoomToggleState(false);
 
     var SHARE_CONFIG = {
-      title: '도깨비의 세계 x 피카플레이 미션 이벤트',
-      description: '도깨비의 세계를 플레이하고 마일리지와 특별한 선물을 받아가세요!',
+      title: '도깨비의세계 x 피카플레이 미션 이벤트',
+      description: '도깨비의세계를 플레이하고 마일리지와 특별한 선물을 받아가세요!',
       kakaoKey: 'd1c0c39f4dbac0062bf36527a3021357',
       ogImage:  'https://ics.mediaweb.co.kr/_event/20260923_dokkaebi/assets/Thumbnail_800x400.jpg'
     };
