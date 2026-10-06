@@ -101,13 +101,25 @@
     <div class="hero-content">
       <h1 class="hero-title-img"><picture><source media="(max-width: 720px)" type="image/avif" srcset="assets/title_m.avif"><source media="(max-width: 720px)" srcset="assets/title_m.webp"><source type="image/avif" srcset="assets/KV_title.avif"><img src="assets/KV_title.webp" alt="정식 출시 기념, 차원이 다른 이벤트 출두요~! 지금 플레이하고 최대 5천 마일리지와 특별한 선물 받아가시게! 2026.10.12 ~ 2026.11.01 피카플레이 회원 대상"></picture></h1>
 
-      <a class="hero-cta" href="https://dokkaebi.kakaogames.com/" target="_blank" rel="noopener">
+      <a class="hero-cta" href="https://dokkaebi.kakaogames.com/?utm_source=mediaweb&utm_medium=da&utm_campaign=predown&utm_content=predownload" target="_blank" rel="noopener">
         <img src="assets/BTN.webp" alt="지금 플레이하고 마일리지 받기">
       </a>
     </div>
   </section>
 
   <!-- 출석체크 미션 -->
+  <!--
+    [개발 연동] 출석체크 미션 마일리지 소진(선착순 마감) 딤처리 — 카드별 / 전체 2가지
+    ① 카드별 소진: 소진된 DAY 카드에만 is-soldout 추가 (DAY마다 독립, 예: DAY 2만 소진도 가능)
+        예) <div class="attendance-card is-locked is-soldout">  (is-active / is-locked 는 그대로 둬도 됨)
+        → 그 카드만 딤처리 + "마일리지 소진" 도장 자동 표시. 다른 DAY 카드는 영향 없음
+    ② 전체 소진(미션 마감): 아래 section 에 is-soldout 추가
+        예) <section class="section section--a section--reward-bg section--attendance is-soldout">
+        → DAY 1~3 카드·화살표·하단 마일리지 띠 전체 딤처리 + 카드 3장 가운데에 큰 도장 1개
+        → ①로 카드에 붙여둔 is-soldout 은 지우지 않아도 됨 (카드별 작은 도장은 자동으로 숨김)
+    - 도장은 CSS로 그려지므로 마크업 추가 불필요 (스타일: css/style.css "[개발 연동] 출석체크 미션 마일리지 소진")
+    - 디자인 미리보기: 주소 뒤에 ?preview=soldout-day2 (DAY 2만), ?preview=soldout-day1,3 (DAY 1·3), ?preview=soldout (전체)
+  -->
   <section class="section section--a section--reward-bg section--attendance">
     <picture class="avif-wrap"><source type="image/avif" data-srcset="assets/objet_left.avif"><img loading="lazy" decoding="async" class="attendance-objet attendance-objet--left" data-src="assets/objet_left.webp" alt=""></picture>
     <picture class="avif-wrap"><source type="image/avif" data-srcset="assets/objet_right.avif"><img loading="lazy" decoding="async" class="attendance-objet attendance-objet--right" data-src="assets/objet_right.webp" alt=""></picture>
@@ -238,7 +250,7 @@
       </div>
       <div class="attendance-banner attendance-banner--notice" role="note">
         <span class="attendance-banner__dot" aria-hidden="true"></span>
-        <span class="attendance-banner__text">쿠폰은 <span class="hl">2026년 11월 30일 23:59:59</span> 까지 등록 가능하며, 도깨비의세계 계정 당 1회 등록 가능합니다.</span>
+        <span class="attendance-banner__text">쿠폰은 <span class="hl">2026년 11월 30일 23:59</span> 까지 등록 가능하며, 도깨비의세계 계정 당 1회 등록 가능합니다.</span>
         <span class="attendance-banner__dot" aria-hidden="true"></span>
       </div>
     </div>
@@ -350,13 +362,14 @@
           <li>이벤트 참여는 PC 버전으로만 참여 가능하며, 모바일 앱 플레이어를 통한 참여는 인정되지 않습니다.</li>
           <li>누적 플레이 미션은 계정당 PC방 또는 개인 PC에서 1회 참여 가능하며, 중복 참여는 불가합니다.</li>
           <li>출석체크 미션은 계정당 PC방 또는 개인 PC에서 최대 3회 참여 가능하며, 중복 참여는 불가합니다.</li>
+          <li>출석체크 미션은 매일 00시에 초기화됩니다.</li>
           <li>본 이벤트는 쿠폰 및 마일리지 소진 현황에 따라 조기 종료 또는 연장될 수 있습니다.</li>
           <li>이벤트 참여 전 크래프트박스 → 혜택박스 → 미션상세팝업 내 이벤트 참여 가능 여부를 확인해 주세요.</li>
           <li>게임 플레이 시간 반영은 최대 30분 정도의 지연 시간이 발생할 수 있습니다.</li>
           <li>쿠폰은 피카플레이 계정으로 자동 지급되며, <a href="https://coupon.kakaogames.com/dokkaebi/ko/" target="_blank" rel="noopener">[도깨비의세계 쿠폰 등록]</a> 페이지에 쿠폰 번호를 입력하거나 붙여넣기하여 사용 가능합니다.</li>
           <li>지급된 마일리지/쿠폰은 피카플레이 APP 또는 크래프트박스 마이페이지에서 확인하실 수 있습니다.</li>
           <li>지급받은 마일리지는 90일의 유효기간 경과 시 자동 소멸됩니다.</li>
-          <li>쿠폰은 2026년 11월 30일 23:59:59 까지 등록 가능하며, 도깨비의세계 계정 당 1회 등록 가능합니다.</li>
+          <li>쿠폰은 2026년 11월 30일 23:59 까지 등록 가능하며, 도깨비의세계 계정 당 1회 등록 가능합니다.</li>
           <li>이벤트 종료 표기는 실시간으로 반영되지 않을 수 있습니다.</li>
           <li>부정한 방법으로 이벤트에 참여한 이력이 확인될 경우 지급된 보상이 회수 될 수 있습니다.</li>
           <li>이벤트 관련 문의 및 불편사항은 피카플레이 또는 크래프트박스 고객센터 1:1 문의를 이용해 주세요.</li>
@@ -368,6 +381,23 @@
 
 </div>
 <script src="js/script.js"></script>
+<script>
+  // [디자인 확인용] 출석체크 마일리지 소진(딤) 상태 미리보기
+  //   ?preview=soldout-day2   : DAY 2 카드만 소진 (day1, day3 도 가능)
+  //   ?preview=soldout-day1,3 : DAY 1, DAY 3 카드 소진 (쉼표로 여러 개)
+  //   ?preview=soldout        : 미션 전체 소진
+  // 실제 연동 시에는 카드 또는 section 에 is-soldout 을 붙이면 되며, 이 스크립트는 삭제해도 무방함
+  (function () {
+    var preview = new URLSearchParams(location.search).get('preview') || '';
+    var day = preview.match(/^soldout-day([1-3](,[1-3])*)$/);
+    var cards = document.querySelectorAll('.attendance-card');
+    if (preview === 'soldout') {
+      document.querySelector('.section--attendance').classList.add('is-soldout');
+    } else if (day) {
+      day[1].split(',').forEach(function (n) { cards[n - 1].classList.add('is-soldout'); });
+    }
+  })();
+</script>
 
 <div id="shareModal" class="share-modal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle" aria-hidden="true">
     <div class="share-modal__dialog" role="document">
